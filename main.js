@@ -1,5 +1,7 @@
 var url = 'https://restcountries.eu/rest/v1/name/';
 var countriesList = $('#countries');
+var preFlag = "http://www.countryflags.io/";
+var postFlag = "/shiny/64.png";
 
 $(function() {
     $('#search').click(searchCountries);
@@ -23,6 +25,6 @@ function searchCountries() {
 function showCountriesList(resp) {
     countriesList.empty();
     resp.forEach(function(item) {
-        $('<li>').text(item.name).appendTo(countriesList);
+        $('<img>').attr('src', preFlag + item.alpha2Code + postFlag).appendTo($('<li>').text(item.name).appendTo(countriesList));
     });
 }
